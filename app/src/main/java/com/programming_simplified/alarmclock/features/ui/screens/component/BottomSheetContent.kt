@@ -15,6 +15,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.programming_simplified.alarmclock.common.CommonIconFromImageVector
+import com.programming_simplified.alarmclock.common.SpacerHeight
 
 
 @Composable
@@ -38,7 +39,7 @@ fun BottomSheetContents(
                 Row(
                     modifier = Modifier
                         .fillMaxSize()
-                        .padding(20.dp),
+                        .padding(start = 20.dp, end = 20.dp, top = 30.dp),
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
                     CommonIconFromImageVector(icon = Icons.Rounded.Close, tint = Color.Black) {
@@ -49,13 +50,17 @@ fun BottomSheetContents(
                         style = TextStyle(
                             color = Color.Black,
                             fontSize = 17.sp,
-                            fontWeight = FontWeight.Normal
+                            fontWeight = FontWeight.SemiBold
                         )
                     )
                     CommonIconFromImageVector(icon = Icons.Rounded.Check, tint = Color.Black) {
                         onCheck()
                     }
                 }
+            }
+            item {
+                SpacerHeight(20.dp)
+                HoursNumberPickerScreen()
             }
 
         }

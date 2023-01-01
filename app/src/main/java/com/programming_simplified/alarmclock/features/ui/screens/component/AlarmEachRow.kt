@@ -1,5 +1,6 @@
 package com.programming_simplified.alarmclock.features.ui.screens.component
 
+import android.hardware.lights.Light
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -15,12 +16,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.programming_simplified.alarmclock.common.CommonLine
+import com.programming_simplified.alarmclock.common.CustomToggleButton
 
 
 @Composable
 fun AlarmEachRow() {
 
-    var isToggle by remember { mutableStateOf(false) }
+    var selected by remember { mutableStateOf(false) }
 
     Card(
         modifier = Modifier
@@ -32,7 +34,9 @@ fun AlarmEachRow() {
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Color.White)
+                .background(
+                    if (selected) Color.White else Color.White.copy(0.6f)
+                )
         ) {
             Row(
                 modifier = Modifier
@@ -43,12 +47,16 @@ fun AlarmEachRow() {
                 Column {
                     Text(
                         text = "07:00", style = TextStyle(
-                            color = Color.Black, fontSize = 35.sp, fontWeight = FontWeight.Bold
+                            color = if (selected) Color.Black else Color.LightGray,
+                            fontSize = 35.sp,
+                            fontWeight = FontWeight.Bold
                         )
                     )
                     Text(
                         text = "Ring Once", style = TextStyle(
-                            color = Color.Gray, fontSize = 13.sp, fontWeight = FontWeight.Normal
+                            color = if (selected) Color.Gray else Color.LightGray,
+                            fontSize = 13.sp,
+                            fontWeight = FontWeight.Normal
                         )
                     )
                 }
@@ -56,14 +64,12 @@ fun AlarmEachRow() {
                     modifier = Modifier.align(CenterVertically)
                 ) {
                     CommonLine(
-                        width = 0.5.dp,
-                        height = 20.dp,
-                        modifier = Modifier.align(CenterVertically)
+                        width = 0.5.dp, height = 20.dp, modifier = Modifier.align(CenterVertically)
                     )
-                    IconToggleButton(checked = isToggle, onCheckedChange = {
-                        isToggle = it
-                    }, modifier = Modifier.padding(start = 15.dp)) {
-                        Text(text = "check", color = Color.Black)
+                    CustomToggleButton(
+                        selected = selected, modifier = Modifier.padding(start = 10.dp)
+                    ) {
+                        selected = it
                     }
                 }
             }

@@ -23,6 +23,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
+import com.programming_simplified.alarmclock.ui.theme.DarkPink
 import kotlinx.coroutines.launch
 import kotlin.math.abs
 import kotlin.math.roundToInt
@@ -44,7 +45,7 @@ fun <T> ListItemPicker(
     label: (T) -> String = { it.toString() },
     value: T,
     onValueChange: (T) -> Unit,
-    dividersColor: Color = MaterialTheme.colors.primary,
+    dividersColor: Color = DarkPink,
     list: List<T>,
     textStyle: TextStyle = LocalTextStyle.current,
 ) {
@@ -249,7 +250,7 @@ fun NumberPicker(
     },
     value: Int,
     onValueChange: (Int) -> Unit,
-    dividersColor: Color = MaterialTheme.colors.primary,
+    dividersColor: Color = DarkPink,
     range: Iterable<Int>,
     textStyle: TextStyle = LocalTextStyle.current,
 ) {
@@ -296,7 +297,7 @@ fun FullHoursNumberPicker(
     hoursDivider: (@Composable () -> Unit)? = null,
     minutesDivider: (@Composable () -> Unit)? = null,
     onValueChange: (Hours) -> Unit,
-    dividersColor: Color = MaterialTheme.colors.primary,
+    dividersColor: Color = DarkPink,
     textStyle: TextStyle = LocalTextStyle.current,
 ) {
     Row(
@@ -350,7 +351,7 @@ fun HoursNumberPicker(
     hoursDivider: (@Composable () -> Unit)? = null,
     minutesDivider: (@Composable () -> Unit)? = null,
     onValueChange: (Hours) -> Unit,
-    dividersColor: Color = MaterialTheme.colors.primary,
+    dividersColor: Color = DarkPink,
     textStyle: TextStyle = LocalTextStyle.current,
 ) {
     when (value) {

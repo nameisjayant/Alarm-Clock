@@ -19,7 +19,7 @@ fun HoursNumberPickerScreen() {
             .fillMaxWidth()
             .padding(vertical = 16.dp),
         leadingZero = true,
-        dividersColor = DarkPink,
+        dividersColor = DarkPink.copy(0.4f),
         value = state,
         onValueChange = {
             state = it

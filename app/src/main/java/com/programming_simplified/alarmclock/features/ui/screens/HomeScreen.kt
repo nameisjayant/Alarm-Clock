@@ -10,6 +10,7 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Add
 import androidx.compose.material.icons.rounded.Menu
+import androidx.compose.material.icons.rounded.MoreVert
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
@@ -27,6 +28,7 @@ import com.programming_simplified.alarmclock.features.ui.screens.component.Alarm
 import com.programming_simplified.alarmclock.features.ui.screens.component.BottomSheetContents
 import com.programming_simplified.alarmclock.ui.theme.DarkPink
 import com.programming_simplified.alarmclock.ui.theme.Background
+import com.programming_simplified.alarmclock.ui.theme.LightPink
 import kotlinx.coroutines.launch
 
 
@@ -78,7 +80,7 @@ fun HomeScreen() {
             Box(
                 modifier = Modifier
                     .fillMaxSize()
-                    .background(Background)
+                    .background(LightPink.copy(0.1f))
             ) {
                 LazyColumn(
                     modifier = Modifier
@@ -91,7 +93,7 @@ fun HomeScreen() {
                             modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.TopEnd
                         ) {
                             CommonIconFromImageVector(
-                                icon = Icons.Rounded.Menu,
+                                icon = Icons.Rounded.MoreVert,
                                 tint = DarkPink,
                                 modifier = Modifier.padding(top = 13.dp)
                             ) {}

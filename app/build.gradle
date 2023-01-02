@@ -66,4 +66,6 @@ dependencies {
 
     //navigation
     implementation("androidx.navigation:navigation-compose:$compose_navigation")
+
+    implementation "com.google.accompanist:accompanist-flowlayout:$accompanist"
 }

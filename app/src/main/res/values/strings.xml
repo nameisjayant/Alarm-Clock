@@ -2,4 +2,6 @@
     <string name="app_name">AlarmClock</string>
     <string name="alarm">Alarm</string>
     <string name="new_alarm">New alarm</string>
+    <string name="ring_once">Ring once</string>
+    <string name="repeat">Repeat</string>
 </resources>

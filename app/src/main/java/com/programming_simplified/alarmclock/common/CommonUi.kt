@@ -1,26 +1,37 @@
 package com.programming_simplified.alarmclock.common
 
 import android.annotation.SuppressLint
+import android.view.MotionEvent
 import androidx.annotation.DrawableRes
+import androidx.compose.animation.Animatable
+import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.core.LinearOutSlowInEasing
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Card
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.runtime.Composable
+import androidx.compose.material.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.input.pointer.pointerInteropFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.programming_simplified.alarmclock.ui.theme.DarkPink
+import com.programming_simplified.alarmclock.ui.theme.LightPink
+import kotlinx.coroutines.launch
 
 
 @SuppressLint("ModifierParameter")
@@ -113,9 +124,7 @@ fun CheckCircle(
 
 @Composable
 fun CustomToggleButton(
-    selected: Boolean,
-    modifier: Modifier = Modifier,
-    onUpdate: (Boolean) -> Unit
+    selected: Boolean, modifier: Modifier = Modifier, onUpdate: (Boolean) -> Unit
 ) {
 
     Card(
@@ -123,17 +132,45 @@ fun CustomToggleButton(
             .width(50.dp)
             .noRippleEffect {
                 onUpdate(!selected)
-            },
-        shape = RoundedCornerShape(16.dp), elevation = 0.dp
+            }, shape = RoundedCornerShape(16.dp), elevation = 0.dp
     ) {
         Box(
             modifier = Modifier.background(
-                if (selected) DarkPink else Color.Gray
-            ),
-            contentAlignment = if (selected) Alignment.TopEnd else Alignment.TopStart
+                if (selected) DarkPink else LightPink.copy(0.4f)
+            ), contentAlignment = if (selected) Alignment.TopEnd else Alignment.TopStart
         ) {
             CheckCircle(modifier = Modifier.padding(5.dp))
         }
     }
 
 }
+
+
+@OptIn(ExperimentalMaterialApi::class)
+@Composable
+fun CustomChip(
+    label: String, selected: Boolean, modifier: Modifier = Modifier, onChipChange: (String) -> Unit
+) {
+
+    Chip(
+        onClick = {
+            onChipChange(label)
+        },
+        shape = RoundedCornerShape(16.dp),
+        modifier = modifier
+            .width(150.dp)
+            .height(35.dp),
+        colors = ChipDefaults.chipColors(
+            backgroundColor = if (selected) Color.Black else LightPink.copy(alpha = 0.2f),
+            contentColor = if (selected) Color.White else Color.Black
+        ),
+    ) {
+        Box(
+            modifier = modifier.fillMaxWidth(), contentAlignment = Alignment.Center
+        ) {
+            Text(text = label)
+        }
+    }
+
+}
+

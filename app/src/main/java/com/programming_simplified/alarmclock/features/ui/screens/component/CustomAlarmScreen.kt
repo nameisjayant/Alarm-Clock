@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.google.accompanist.flowlayout.FlowRow
@@ -38,13 +39,13 @@ fun CustomAlarmScreen(
     var week by remember { mutableStateOf(RING_ONCE) }
 
     LaunchedEffect(key1 = selected) {
-        if (selected.size == 7) week = EVERYDAY else week = RING_ONCE
+        week = if (selected.size == 7) EVERYDAY else RING_ONCE
     }
 
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(20.dp),
+            .padding(start = 20.dp, end = 20.dp, top = 20.dp),
         shape = RoundedCornerShape(16.dp),
         elevation = 0.dp
     ) {
@@ -54,7 +55,13 @@ fun CustomAlarmScreen(
                 .padding(15.dp)
         ) {
             Text(text = stringResource(id = R.string.repeat))
-            Text(text = week, color = DarkPink, modifier = Modifier.padding(top = 5.dp))
+            Text(
+                text = week, color = DarkPink, modifier = Modifier.padding(top = 3.dp),
+                style = TextStyle(
+                    fontSize = 13.sp,
+                    fontWeight = FontWeight.Normal
+                )
+            )
             SpacerHeight(20.dp)
             FlowRow(
                 mainAxisAlignment = MainAxisAlignment.SpaceBetween,

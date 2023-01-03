@@ -55,7 +55,7 @@ fun HomeScreen() {
         }) {
 
         }
-    }, sheetShape = RoundedCornerShape(18.dp)) {
+    }, sheetShape = RoundedCornerShape(topStart = 32.dp, topEnd = 32.dp)) {
         Scaffold(
             floatingActionButton = {
                 FloatingActionButton(

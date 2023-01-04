@@ -1,6 +1,5 @@
 package com.programming_simplified.alarmclock.features.ui.screens.component
 
-import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -23,7 +22,6 @@ import com.programming_simplified.alarmclock.R
 import com.programming_simplified.alarmclock.common.SpacerHeight
 import com.programming_simplified.alarmclock.common.noRippleEffect
 import com.programming_simplified.alarmclock.features.model.Weeks
-import com.programming_simplified.alarmclock.features.model.listOfWeeks
 import com.programming_simplified.alarmclock.ui.theme.DarkPink
 import com.programming_simplified.alarmclock.ui.theme.LightPink
 import com.programming_simplified.alarmclock.utils.EVERYDAY
@@ -32,7 +30,8 @@ import com.programming_simplified.alarmclock.utils.RING_ONCE
 
 @Composable
 fun CustomAlarmScreen(
-    weeks: List<Weeks>, tempList: Set<Int>
+    weeks: List<Weeks>,
+    tempList: Set<Int>
 ) {
 
     var selected by rememberSaveable { mutableStateOf(tempList) }
@@ -85,7 +84,9 @@ fun CustomAlarmScreen(
 
 @Composable
 fun CustomWeekSelect(
-    title: Char, selected: Boolean, onClick: () -> Unit
+    title: Char,
+    selected: Boolean,
+    onClick: () -> Unit
 ) {
 
     Card(elevation = 0.dp, shape = CircleShape, modifier = Modifier

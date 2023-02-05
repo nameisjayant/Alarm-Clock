@@ -124,7 +124,9 @@ fun CheckCircle(
 
 @Composable
 fun CustomToggleButton(
-    selected: Boolean, modifier: Modifier = Modifier, onUpdate: (Boolean) -> Unit
+    selected: Boolean,
+    modifier: Modifier = Modifier,
+    onUpdate: (Boolean) -> Unit
 ) {
 
     Card(
